@@ -7,3 +7,6 @@
 [submodule "products"]
 	path = products
 	url = https://github.com/MSierraDev/products.git
+[submodule "auth-users"]
+	path = auth-users
+	url = https://github.com/MSierraDev/auth-users.git
