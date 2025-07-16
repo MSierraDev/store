@@ -4,3 +4,6 @@
 [submodule "orders"]
 	path = orders
 	url = https://github.com/MSierraDev/orders.git
+[submodule "products"]
+	path = products
+	url = https://github.com/MSierraDev/products.git
