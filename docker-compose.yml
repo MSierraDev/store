@@ -41,7 +41,7 @@ services:
     environment:
       - PORT=4001
       - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=postgresql://postgres:123456@products-db:5432/ordersdb?schema=public
+      - DATABASE_URL=postgresql://postgres:123456@products-db:5432/products-db?schema=public
 
  
 
