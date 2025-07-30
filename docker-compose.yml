@@ -92,5 +92,6 @@ services:
     environment:
       - PORT=4003
       - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@auth-usersDb:27017/auth_users?authSource=admin    
+      - DATABASE_URL=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@auth-usersDb:27017/auth_users?authSource=admin
+      - JWT_SECRET=${JWT_SECRET}    
 
