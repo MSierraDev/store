@@ -10,3 +10,6 @@
 [submodule "auth-users"]
 	path = auth-users
 	url = https://github.com/MSierraDev/auth-users.git
+[submodule "payments"]
+	path = payments
+	url = https://github.com/MSierraDev/payments
