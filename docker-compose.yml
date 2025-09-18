@@ -95,3 +95,14 @@ services:
       - DATABASE_URL=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@auth-usersDb:27017/auth_users?authSource=admin
       - JWT_SECRET=${JWT_SECRET}    
 
+  payments:
+    build: ./payments
+    volumes:
+      - ./payments/src:/usr/src/app/src
+    command: npm run start:dev
+    ports:
+      - 4004:4004
+    environment:
+      - PORT=4004
+      - NATS_SERVERS=nats://nats-server:4222
+      - MP_API_KEY=${MP_API_KEY}
