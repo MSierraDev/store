@@ -71,15 +71,16 @@ services:
 
   auth-usersDb:
     container_name: auth_users_database
-    image: mongo:6.0
+    image: postgres:16.2
     restart: always
     ports:
-      - 27017:27017
+      - 5434:5432
     volumes:
-      - ./auth-users/mongo:/data/db
+      - ./auth-users/postgres:/var/lib/posgresql/data
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME}
-      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_AUTH_USERS_DB}
 
 
   auth-users:
@@ -92,8 +93,8 @@ services:
     environment:
       - PORT=4003
       - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=mongodb://${MONGO_INITDB_ROOT_USERNAME}:${MONGO_INITDB_ROOT_PASSWORD}@auth-usersDb:27017/auth_users?authSource=admin
-      - JWT_SECRET=${JWT_SECRET}    
+      - JWT_SECRET=${JWT_SECRET}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@auth-usersDb:5432/${POSTGRES_AUTH_USERS_DB}?schema=public    
 
   payments:
     build: ./payments
