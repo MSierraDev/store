@@ -13,3 +13,6 @@
 [submodule "payments"]
 	path = payments
 	url = https://github.com/MSierraDev/payments
+[submodule "notifications"]
+	path = notifications
+	url = https://github.com/MSierraDev/notifications
