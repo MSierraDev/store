@@ -262,6 +262,23 @@ services:
       - nats-server
     restart: unless-stopped
 
+  #NOTIFICATIONS SERVICE
+  notifications:
+    build: ./notifications
+    container_name: notifications-service
+    volumes:
+      - ./notifications/src:/usr/src/app/src
+    command: npm run start:dev
+    ports:
+      - 4005:4005
+    environment:
+      - PORT=4005
+      - NATS_SERVERS=nats://nats-server:4222
+      - RESEND_API_KEY=${RESEND_API_KEY}
+    depends_on:
+      - nats-server
+    restart: unless-stopped
+
 # ✅ Definir volúmenes nombrados
 volumes:
   products_data:
