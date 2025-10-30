@@ -139,7 +139,7 @@ services:
     image: postgres:16.2
     restart: unless-stopped
     volumes:
-      - products_data:/var/lib/postgresql/data  # ✅ Volumen nombrado
+      - products_data:/var/lib/postgresql/data  
     ports:
       - ${POSTGRES_PORT}:5432
     environment:
@@ -176,7 +176,7 @@ services:
     image: postgres:16.2
     restart: unless-stopped
     volumes:
-      - orders_data:/var/lib/postgresql/data  # ✅ Volumen nombrado
+      - orders_data:/var/lib/postgresql/data  
     ports:
       - ${POSTGRES_ORDERS_PORT}:5432
     environment:
@@ -215,7 +215,7 @@ services:
     ports:
       - 5434:5432
     volumes:
-      - auth_users_data:/var/lib/postgresql/data  # ✅ Corregido y volumen nombrado
+      - auth_users_data:/var/lib/postgresql/data  
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -279,7 +279,7 @@ services:
       - nats-server
     restart: unless-stopped
 
-# ✅ Definir volúmenes nombrados
+
 volumes:
   products_data:
     driver: local
