@@ -275,6 +275,7 @@ services:
       - PORT=4005
       - NATS_SERVERS=nats://nats-server:4222
       - RESEND_API_KEY=${RESEND_API_KEY}
+      - FROM=${FROM}
     depends_on:
       - nats-server
     restart: unless-stopped
